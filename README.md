@@ -9,7 +9,7 @@
 
 Entorno de escritorio minimalista basado en Hyprland. Un único script instala las dependencias y despliega la configuración de la terminal, el lanzador, los fondos de pantalla, la barra, las notificaciones, el bloqueo de pantalla y el gestor de inicio de sesión.
 
-[Preview](https://github.com/user-attachments/assets/7020feb7-4ece-4b2a-9ebf-f2544b72b29e)
+[Preview.webm](https://github.com/user-attachments/assets/6fbc5176-05c9-440c-9b84-bffa6e46def9)
 
 ## Qué incluye
 
