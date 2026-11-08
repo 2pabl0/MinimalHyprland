@@ -1,0 +1,109 @@
+// ~/.config/waybar/config.jsonc
+// Catppuccin Mocha · Mauve
+{
+  "layer": "top",
+  "position": "top",
+  "height": 40,
+  "spacing": 0,
+  "margin-top": 0,
+  "margin-left": 0,
+  "margin-right": 0,
+
+  "modules-left": ["hyprland/workspaces"],
+  "modules-center": ["idle_inhibitor", "clock"],
+  "modules-right": [
+    "pulseaudio",
+    "pulseaudio#mic",
+    "battery",
+    "tray",
+    "custom/power"
+  ],
+
+  // ── Izquierda ──────────────────────────────────────────
+  "hyprland/workspaces": {
+    "format": "{id}",
+    "on-click": "activate",
+    "sort-by-number": true,
+    "persistent-workspaces": {
+      "*": 2
+    }
+  },
+
+  // ── Centro ─────────────────────────────────────────────
+  "clock": {
+    "interval": 1,
+    "format": "{:%H:%M:%S}",
+    "format-alt": "󰃭  {:%A, %d %B %Y}",
+    "tooltip-format": "<tt><small>{calendar}</small></tt>",
+    "calendar": {
+      "mode": "month",
+      "on-scroll": 1,
+      "format": {
+        "months":   "<span color='#cba6f7'><b>{}</b></span>",
+        "weekdays": "<span color='#b4befe'><b>{}</b></span>",
+        "days":     "<span color='#cdd6f4'>{}</span>",
+        "today":    "<span color='#f5c2e7'><b><u>{}</u></b></span>"
+      }
+    },
+    "actions": {
+      "on-scroll-up": "shift_up",
+      "on-scroll-down": "shift_down"
+    }
+  },
+
+  // ── Derecha ────────────────────────────────────────────
+  "pulseaudio": {
+    "format": "{icon} {volume}",
+    "format-muted": "󰝟 ",
+    "format-icons": {
+      "headphone": "󰋋",
+      "headset": "󰋎",
+      "default": ["󰕿", "󰖀", "󰕾"]
+    },
+    "scroll-step": 5,
+    "on-click": "pavucontrol",
+    "on-click-right": "pactl set-sink-mute @DEFAULT_SINK@ toggle"
+  },
+
+  "pulseaudio#mic": {
+    "format": "{format_source}",
+    "format-source": "󰍬",
+    "format-source-muted": "󰍭",
+    "tooltip-format": "Micrófono: {source_volume}%",
+    "on-click": "pactl set-source-mute @DEFAULT_SOURCE@ toggle",
+    "on-scroll-up": "pactl set-source-volume @DEFAULT_SOURCE@ +5%",
+    "on-scroll-down": "pactl set-source-volume @DEFAULT_SOURCE@ -5%"
+  },
+
+  "battery": {
+    "interval": 30,
+    "format": "{icon} {capacity}%",
+    "format-charging": "󰂄 {capacity}%",
+    "format-plugged": "󰚥 {capacity}%",
+    "format-full": "󰁹 {capacity}%",
+    "format-icons": ["󰁺", "󰁼", "󰁾", "󰂀", "󰁹"],
+    "tooltip-format": "{timeTo}\n{power} W",
+    "states": { "warning": 20, "critical": 10 }
+  },
+
+  "tray": {
+    "icon-size": 16,
+    "spacing": 8
+  },
+
+  "idle_inhibitor": {
+    "format": "{icon}",
+    "format-icons": {
+      "activated": "󰅶",
+      "deactivated": "󰛊"
+    },
+    "tooltip-format-activated": "Suspensión bloqueada",
+    "tooltip-format-deactivated": "Suspensión permitida"
+  },
+
+  "custom/power": {
+    "format": "⏻",
+    "tooltip": false,
+    "on-click": "wlogout"
+  }
+}

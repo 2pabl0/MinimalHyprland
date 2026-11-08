@@ -1,0 +1,159 @@
+/* ~/.config/waybar/style.css
+   Catppuccin Mocha · Mauve */
+
+@define-color base     #1e1e2e;
+@define-color mantle   #181825;
+@define-color crust    #11111b;
+@define-color surface0 #313244;
+@define-color surface1 #45475a;
+@define-color overlay0 #6c7086;
+@define-color text     #cdd6f4;
+@define-color subtext  #a6adc8;
+@define-color mauve    #cba6f7;
+@define-color lavender #b4befe;
+@define-color pink     #f5c2e7;
+@define-color red      #f38ba8;
+@define-color yellow   #f9e2af;
+
+* {
+  font-family: "JetBrainsMono Nerd Font";
+  font-size: 13px;
+  border: none;
+  border-radius: 0;
+  min-height: 0;
+}
+
+/* Barra completa, como en la captura */
+window#waybar {
+  background: alpha(@base, 0.92);
+  color: @text;
+}
+
+/* Islas */
+.modules-left,
+.modules-center,
+.modules-right {
+  background: @crust;
+  border: 1px solid alpha(@mauve, 0.18);
+  border-radius: 14px;
+  margin: 5px 0;
+  padding: 0 6px;
+}
+
+.modules-left  { margin-left: 24px; }
+.modules-right { margin-right: 24px; }
+
+/* ── Workspaces ─────────────────────────────── */
+#workspaces button {
+  padding: 0 14px;
+  margin: 4px 2px;
+  color: @lavender;
+  background: transparent;
+  border-radius: 12px;
+  transition: all 0.2s ease;
+}
+
+#workspaces button:hover {
+  background: @surface0;
+  color: @mauve;
+  box-shadow: none;
+}
+
+#workspaces button.active {
+  color: @crust;
+  background: @mauve;
+  padding: 0 20px;
+}
+
+#workspaces button.urgent {
+  color: @crust;
+  background: @red;
+}
+
+/* ── Reloj ──────────────────────────────────── */
+#clock {
+  padding: 0 14px;
+  color: @lavender;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+/* ── Derecha ────────────────────────────────── */
+#pulseaudio,
+#pulseaudio.mic,
+#tray,
+#battery,
+#idle_inhibitor,
+#custom-power {
+  padding: 0 9px;
+  color: @mauve;
+}
+
+#pulseaudio {
+  color: @lavender;
+}
+
+#pulseaudio.muted,
+#pulseaudio.mic.source-muted {
+  color: @overlay0;
+}
+
+#idle_inhibitor.activated {
+  color: @pink;
+}
+
+#battery {
+  color: #a6e3a1;
+}
+
+#battery.warning:not(.charging) {
+  color: @yellow;
+}
+
+#battery.critical:not(.charging) {
+  color: @red;
+}
+
+#custom-power {
+  color: @red;
+  padding-right: 12px;
+}
+
+#pulseaudio:hover,
+#idle_inhibitor:hover {
+  color: @pink;
+}
+
+#custom-power:hover {
+  color: @pink;
+}
+
+#tray > .needs-attention {
+  background: alpha(@red, 0.3);
+  border-radius: 8px;
+}
+
+/* ── Tooltips ───────────────────────────────── */
+tooltip {
+  background: alpha(@crust, 0.97);
+  border: 2px solid @mauve;
+  border-radius: 12px;
+}
+
+tooltip label {
+  color: @text;
+  padding: 4px;
+}
+
+/* Menú contextual del tray */
+menu {
+  background: @crust;
+  border: 1px solid @mauve;
+  border-radius: 10px;
+  color: @text;
+}
+
+menuitem:hover {
+  background: @surface0;
+  color: @mauve;
+}
